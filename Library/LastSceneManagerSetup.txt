@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Jungle Canyon/Scenes/Jungle Canyon.unity
+- path: Assets/Game/DesignTools.unity
   isLoaded: 1
   isActive: 1
