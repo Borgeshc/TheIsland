@@ -29,15 +29,23 @@ public class Movement : MonoBehaviour
         rb.useGravity = true;
     }
 
+    void Update()
+    {
+
+        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        horizontal2 = Input.GetAxisRaw("Horizontal2") * rotationSpeed * Time.deltaTime;    //Rotate character
+    }
     void FixedUpdate()
     {
-        vertical = Input.GetAxis("Vertical");
-
-        horizontal2 = Input.GetAxis("Horizontal2") * rotationSpeed * Time.deltaTime;    //Rotate character
-
-        if(vertical > 0 && grounded)
+        anim.SetFloat("vertical", vertical);
+        anim.SetFloat("horizontal", horizontal);
+        //anim.SetFloat("Horizon", horizontal);
+      //  anim.SetFloat("Vertical", vertical);
+        if(grounded)
         {
-            Vector3 targetVelocity = new Vector3(0, 0, vertical);
+            Vector3 targetVelocity = new Vector3(horizontal, 0, vertical);
             targetVelocity = transform.TransformDirection(targetVelocity);
             targetVelocity *= speed;
 
@@ -56,21 +64,127 @@ public class Movement : MonoBehaviour
 
         transform.Rotate(0, horizontal2, 0);
 
-        if (vertical > 0 && vertical < .5f)
+        if (vertical > .2f && vertical < .5f) //forward
         {
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isMoving", true);
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isWalkingForward", true);
         }
-        if(vertical >= .5f)
+        if (vertical < -.2f && vertical > -.5f)//back
         {
-            anim.SetBool("isMoving", false);
-            anim.SetBool("isRunning", true);
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isWalkingBack", true);
         }
 
-        if(vertical <= 0)
+        if (horizontal > .2f && horizontal < .5f) //right
         {
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isMoving", false);
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isWalkingRight", true);
+        }
+        if (horizontal < -.2f && horizontal > -.5f)//left
+        {
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isWalkingLeft", true);
+        }
+
+
+        if (vertical >= .5f)//run forward
+        {
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isRunningForward", true);
+        }
+
+        if (vertical <= -.5f)//run back
+        {
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isRunningBack", true);
+        }
+        if (horizontal >= .5f)//run right
+        {
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isRunningRight", true);
+        }
+
+        if (horizontal <= -.5f)//run left
+        {
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isIdle", false);
+
+            anim.SetBool("isRunningLeft", true);
+        }
+
+        if (vertical <= .2f && vertical >= -.2f && horizontal <= .2f && horizontal >= -.2f)
+        {
+           // anim.SetBool("Shoot", false);
+            anim.SetBool("isRunningRight", false);
+            anim.SetBool("isWalkingRight", false);
+            anim.SetBool("isRunningLeft", false);
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isRunningForward", false);
+            anim.SetBool("isWalkingForward", false);
+            anim.SetBool("isRunningBack", false);
+            anim.SetBool("isWalkingBack", false);
             anim.SetBool("isIdle", true);
         }
     }
