@@ -7,7 +7,9 @@ public class TriggersEditor : Editor
     public SerializedProperty
 
         type_Prop,
-        effect_Prop;
+        effect_Prop,
+        animator_Prop,
+        animationClip_Prop;
 
     void OnEnable()
     {
@@ -15,6 +17,9 @@ public class TriggersEditor : Editor
         type_Prop = serializedObject.FindProperty("type");
         effect_Prop = serializedObject.FindProperty("effect");
         //List all the variables
+        //PlayAnimation Variables
+        animator_Prop = serializedObject.FindProperty("animatorController");
+        animationClip_Prop = serializedObject.FindProperty("animationClips");
     }
 
     public override void OnInspectorGUI()
@@ -22,7 +27,7 @@ public class TriggersEditor : Editor
         DrawDefaultInspector();
         serializedObject.Update();
 
-        EditorGUILayout.PropertyField(type_Prop, new GUIContent("type"));
+        EditorGUILayout.PropertyField(type_Prop, new GUIContent("Trigger Type"));
 
         Triggers.TriggerType type = (Triggers.TriggerType)type_Prop.enumValueIndex;
 
@@ -36,12 +41,13 @@ public class TriggersEditor : Editor
 
             case Triggers.TriggerType.OnTriggerEnter:
 
-                EditorGUILayout.PropertyField(effect_Prop, new GUIContent("effect"));
+                EditorGUILayout.PropertyField(effect_Prop, new GUIContent("Effect Type"));
                 switch (effect)
                 {
                     case Triggers.TriggeredEffect.None:
                         break;
                     case Triggers.TriggeredEffect.PlayAnimation:
+                        PlayAnimation();
                         break;
                     case Triggers.TriggeredEffect.Collectables:
                         break;
@@ -67,6 +73,7 @@ public class TriggersEditor : Editor
                     case Triggers.TriggeredEffect.None:
                         break;
                     case Triggers.TriggeredEffect.PlayAnimation:
+                        PlayAnimation();
                         break;
                     case Triggers.TriggeredEffect.Collectables:
                         break;
@@ -92,6 +99,7 @@ public class TriggersEditor : Editor
                     case Triggers.TriggeredEffect.None:
                         break;
                     case Triggers.TriggeredEffect.PlayAnimation:
+                        PlayAnimation();
                         break;
                     case Triggers.TriggeredEffect.Collectables:
                         break;
@@ -112,5 +120,13 @@ public class TriggersEditor : Editor
         }
         serializedObject.ApplyModifiedProperties();
         EditorGUIUtility.LookLikeControls();
+    }
+
+    void PlayAnimation()
+    {
+        EditorGUILayout.PropertyField(animator_Prop, new GUIContent("Animator Controller"));
+
+        EditorGUILayout.PropertyField(animationClip_Prop, new GUIContent("Animation Clips"), true);
+
     }
 }
