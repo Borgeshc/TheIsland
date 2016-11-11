@@ -6,14 +6,34 @@ public class SpawnManagerEditor : Editor
 {
     public SerializedProperty
 
-        state_Prop;
+        state_Prop,
+        enemiesPerWave_Prop,
+        increaseEnemiesInWaveBy_Prop,
+        totalWaves_Prop,
+        totalEnemies_Prop,
+        surviveFor_Prop,
+        nextWaveAt_Prop,
+        enemiesPerEachWave_Prop;
+
 
     void OnEnable()
     {
         // Setup the SerializedProperties
         state_Prop = serializedObject.FindProperty("state");
 
-        //List all the variables
+        //Wave Variables
+        enemiesPerWave_Prop = serializedObject.FindProperty("enemiesPerWave");
+        increaseEnemiesInWaveBy_Prop = serializedObject.FindProperty("increaseEnemiesInWaveBy");
+        totalWaves_Prop = serializedObject.FindProperty("totalWaves");
+
+        //One Time Spawn Variables
+        totalEnemies_Prop = serializedObject.FindProperty("totalEnemies");
+
+        //Survival Variables
+        surviveFor_Prop = serializedObject.FindProperty("surviveFor");
+        nextWaveAt_Prop = serializedObject.FindProperty("nextWaveAt");
+        enemiesPerEachWave_Prop = serializedObject.FindProperty("enemiesPerEachWave");
+
     }
 
     public override void OnInspectorGUI()
@@ -31,44 +51,19 @@ public class SpawnManagerEditor : Editor
                 break;
 
             case SpawnManager.Status.Waves:
-                //EditorGUILayout.Slider(sunMinSize_Prop, 0, 1000, new GUIContent("Sun's Min Size"));
-                //EditorGUILayout.Slider(sunMaxSize_Prop, 0, 1000, new GUIContent("Sun's Max Size"));
-                //EditorGUILayout.Slider(sunsMinX_Prop, 0, 1000, new GUIContent("Sun's Min X Spawn"));
-                //EditorGUILayout.Slider(sunsMaxX_Prop, 0, 1000, new GUIContent("Sun's Max X Spawn"));
-                //EditorGUILayout.Slider(sunsMinY_Prop, 0, 1000, new GUIContent("Sun's Min Y Spawn"));
-                //EditorGUILayout.Slider(sunsMaxY_Prop, 0, 1000, new GUIContent("Sun's Max Y Spawn"));
-                //EditorGUILayout.Slider(sunsMinZ_Prop, 0, 1000, new GUIContent("Sun's Min Z Spawn"));
-                //EditorGUILayout.Slider(sunsMaxZ_Prop, 0, 1000, new GUIContent("Sun's Max Z Spawn"));
-                //EditorGUILayout.Slider(sunMinRotationSpeed_Prop, 0, 1000, new GUIContent("Sun's Min Rotation Speed"));
-                //EditorGUILayout.Slider(sunMaxRotationSpeed_Prop, 0, 1000, new GUIContent("Sun's Max Rotation Speed"));
+                EditorGUILayout.PropertyField(enemiesPerWave_Prop, new GUIContent("How many enemies per wave"));
+                EditorGUILayout.PropertyField(increaseEnemiesInWaveBy_Prop, new GUIContent("Increase amout of enemies per wave"));
+                EditorGUILayout.PropertyField(totalWaves_Prop, new GUIContent("Total number of waves"));
                 break;
 
             case SpawnManager.Status.OneTimeSpawn:
-                //EditorGUILayout.Slider(planetSpeed_Prop, 0, 1000, new GUIContent("Planet's Speed"));
-                //EditorGUILayout.Slider(planetMinSize_Prop, 0, 1000, new GUIContent("Planet's Min Size"));
-                //EditorGUILayout.Slider(planetMaxSize_Prop, 0, 1000, new GUIContent("Planet's Max Size"));
-                //EditorGUILayout.Slider(planetsMinX_Prop, 0, 1000, new GUIContent("Planet's Min X Spawn"));
-                //EditorGUILayout.Slider(planetsMaxX_Prop, 0, 1000, new GUIContent("Planet's Max X Spawn"));
-                //EditorGUILayout.Slider(planetsMinY_Prop, 0, 1000, new GUIContent("Planet's Min Y Spawn"));
-                //EditorGUILayout.Slider(planetsMaxY_Prop, 0, 1000, new GUIContent("Planet's Max Y Spawn"));
-                //EditorGUILayout.Slider(planetsMinZ_Prop, 0, 1000, new GUIContent("Planet's Min Z Spawn"));
-                //EditorGUILayout.Slider(planetsMaxZ_Prop, 0, 1000, new GUIContent("Planet's Max Z Spawn"));
-                //EditorGUILayout.Slider(planetsMinRotationSpeed_Prop, 0, 1000, new GUIContent("Planet's Min Rotation Speed"));
-                //EditorGUILayout.Slider(planetsMaxRotationSpeed_Prop, 0, 1000, new GUIContent("Planet's Max Rotation Speed"));
+                EditorGUILayout.PropertyField(totalEnemies_Prop, new GUIContent("How many enemies to spawn"));
                 break;
 
             case SpawnManager.Status.SurviveForTime:
-                //EditorGUILayout.Slider(moonSpeed_Prop, 0, 1000, new GUIContent("Moon's Speed"));
-                //EditorGUILayout.Slider(moonMinSize_Prop, 0, 1000, new GUIContent("Moon's Min Size"));
-                //EditorGUILayout.Slider(moonMaxSize_Prop, 0, 1000, new GUIContent("Moon's Max Size"));
-                //EditorGUILayout.Slider(moonsMinX_Prop, 0, 1000, new GUIContent("Moon's Min X Spawn"));
-                //EditorGUILayout.Slider(moonsMaxX_Prop, 0, 1000, new GUIContent("Moon's Max X Spawn"));
-                //EditorGUILayout.Slider(moonsMinY_Prop, 0, 1000, new GUIContent("Moon's Min Y Spawn"));
-                //EditorGUILayout.Slider(moonsMaxY_Prop, 0, 1000, new GUIContent("Moon's Max Y Spawn"));
-                //EditorGUILayout.Slider(moonsMinZ_Prop, 0, 1000, new GUIContent("Moon's Min Z Spawn"));
-                //EditorGUILayout.Slider(moonsMaxZ_Prop, 0, 1000, new GUIContent("Moon's Max Z Spawn"));
-                //EditorGUILayout.Slider(moonMinRotationSpeed_Prop, 0, 1000, new GUIContent("Moon's Min Rotation Speed"));
-                //EditorGUILayout.Slider(moonMaxRotationSpeed_Prop, 0, 1000, new GUIContent("Moon's Max Rotation Speed"));
+                EditorGUILayout.PropertyField(surviveFor_Prop, new GUIContent("Must survive for how long in seconds"));
+                EditorGUILayout.PropertyField(nextWaveAt_Prop, new GUIContent("Next time you spawn enemies in seconds"));
+                EditorGUILayout.PropertyField(enemiesPerEachWave_Prop, new GUIContent("How many enemies do you spawn at a time"));
                 break;
         }
         serializedObject.ApplyModifiedProperties();

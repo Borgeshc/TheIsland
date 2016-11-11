@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Triggers : MonoBehaviour
 {
     public enum TriggerType { None, OnTriggerEnter, OnTriggerExit, OnTriggerStay };
-    public enum TriggeredEffect { None, PlayAnimation, Collectables, TakeDamage, Died, LoadNextLevel, LoseScreen, WinScreen };
+    public enum TriggeredEffect { None, PlayAnimation, Collectables, TakeDamage, Died, LoadNextLevel };
 
     [HideInInspector, Header("Choose Trigger Type")]
     public TriggerType type;
@@ -28,10 +28,6 @@ public class Triggers : MonoBehaviour
     //Scene Variables
     [HideInInspector, Tooltip("The name of the next scene you want to load.")]
     public string nextLevel;
-    [HideInInspector, Tooltip("The name of the lose scene.")]
-    public string loseScreen;
-    [HideInInspector, Tooltip("The name of the win scene.")]
-    public string winScreen;
 
     void Update()
     {
@@ -72,10 +68,6 @@ public class Triggers : MonoBehaviour
                     break;
                 case TriggeredEffect.LoadNextLevel:
                     break;
-                case TriggeredEffect.LoseScreen:
-                    break;
-                case TriggeredEffect.WinScreen:
-                    break;
             }
         }
     }
@@ -100,10 +92,6 @@ public class Triggers : MonoBehaviour
                 case TriggeredEffect.Died:
                     break;
                 case TriggeredEffect.LoadNextLevel:
-                    break;
-                case TriggeredEffect.LoseScreen:
-                    break;
-                case TriggeredEffect.WinScreen:
                     break;
             }
         }
@@ -133,10 +121,6 @@ public class Triggers : MonoBehaviour
                     break;
                 case TriggeredEffect.LoadNextLevel:
                     break;
-                case TriggeredEffect.LoseScreen:
-                    break;
-                case TriggeredEffect.WinScreen:
-                    break;
             }
         }
     }
@@ -165,15 +149,5 @@ public class Triggers : MonoBehaviour
     void LoadNextLevel()
     {
         SceneManager.LoadScene(nextLevel);
-    }
-
-    void LoadLoseScreen()
-    {
-        SceneManager.LoadScene(loseScreen);
-    }
-
-    void LoadWinScreen()
-    {
-        SceneManager.LoadScene(winScreen);
     }
 }

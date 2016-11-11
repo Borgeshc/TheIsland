@@ -11,12 +11,19 @@ public class Health : MonoBehaviour
     public string projectileTag;
 
     private float currentHealth;
+    public bool test;
 
     void Start()
     {
         currentHealth = health;
     }
-
+    void Update()
+    {
+        if(test)
+        {
+            WasDestroyed();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == projectileTag)
@@ -36,6 +43,14 @@ public class Health : MonoBehaviour
 
     public void WasDestroyed()
     {
+        if(transform.tag == "Enemy")
+        {
+            SpawnManager.activeEnemies--;
+            if(SpawnManager.activeEnemies <= 0)
+            {
+                SpawnManager.startNextWave = true;
+            }
+        }
         Destroy(gameObject);
     }
 }
