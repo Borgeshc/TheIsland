@@ -114,7 +114,7 @@ ModelImporter:
     4300000: Archer
     4300002: arrow
     4300004: Bow
-    7400000: mixamo.com
+    7400000: Shoot
     9500000: //RootNode
     13700000: Archer
     13700002: Bow
@@ -129,16 +129,150 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nInbetween bone default rotation found in this file
+      is different from the one found in the source avatar:\n\t'BowRoot' : rotation
+      error = 133.818909 deg\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Shoot
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Archer
+        weight: 1
+      - path: Bow
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/ArrowRoot
+        weight: 1
+      - path: Root/Skeleton
+        weight: 1
+      - path: Root/Skeleton/Hip
+        weight: 1
+      - path: Root/Skeleton/Hip/L_Thigh
+        weight: 1
+      - path: Root/Skeleton/Hip/L_Thigh/L_Shin
+        weight: 1
+      - path: Root/Skeleton/Hip/L_Thigh/L_Shin/L_Foot
+        weight: 1
+      - path: Root/Skeleton/Hip/L_Thigh/L_Shin/L_Foot/L_Toe
+        weight: 1
+      - path: Root/Skeleton/Hip/R_Thigh
+        weight: 1
+      - path: Root/Skeleton/Hip/R_Thigh/R_Shin
+        weight: 1
+      - path: Root/Skeleton/Hip/R_Thigh/R_Shin/R_Foot
+        weight: 1
+      - path: Root/Skeleton/Hip/R_Thigh/R_Shin/R_Foot/R_Toe
+        weight: 1
+      - path: Root/Skeleton/Spine
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/BowBone
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/BowBone/BowRoot
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/BowBone/BowRoot/LowBone
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/BowBone/BowRoot/Rope
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/BowBone/BowRoot/upBone
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Index01
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Index01/L_Index02
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Index01/L_Index02/L_Index03
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Middle01
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Middle01/L_Middle02
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Middle01/L_Middle02/L_Middle03
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Thumb01
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Thumb01/L_Thumb02
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/L_Clavicle/L_Shoulder/L_Forearm/L_Hand/L_Thumb01/L_Thumb02/L_Thumb03
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/Neck
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/ArrowBone
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/ArrowBone/arrow
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Index01
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Index01/R_Index02
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Index01/R_Index02/R_Index03
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Middle01
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Middle01/R_Middle02
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Middle01/R_Middle02/R_Middle03
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Thumb01
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Thumb01/R_Thumb02
+        weight: 1
+      - path: Root/Skeleton/Spine/Chest/R_Clavicle/R_Shoulder/R_Forearm/R_Hand/R_Thumb01/R_Thumb02/R_Thumb03
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

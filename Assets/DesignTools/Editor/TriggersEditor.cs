@@ -8,8 +8,14 @@ public class TriggersEditor : Editor
 
         type_Prop,
         effect_Prop,
+        //Animation properties
         animator_Prop,
-        animationClip_Prop;
+        animationClip_Prop,
+
+        //LoadScene Properties
+        nextLevel_Prop,
+        loseScreen_Prop,
+        winScreen_Prop;
 
     void OnEnable()
     {
@@ -20,6 +26,11 @@ public class TriggersEditor : Editor
         //PlayAnimation Variables
         animator_Prop = serializedObject.FindProperty("animatorController");
         animationClip_Prop = serializedObject.FindProperty("animationClips");
+
+        //LoadScene Variables
+        nextLevel_Prop = serializedObject.FindProperty("nextLevel");
+        loseScreen_Prop = serializedObject.FindProperty("loseScreen");
+        winScreen_Prop = serializedObject.FindProperty("winScreen");
     }
 
     public override void OnInspectorGUI()
@@ -56,10 +67,13 @@ public class TriggersEditor : Editor
                     case Triggers.TriggeredEffect.Died:
                         break;
                     case Triggers.TriggeredEffect.LoadNextLevel:
+                        LoadNextLevel();
                         break;
                     case Triggers.TriggeredEffect.LoseScreen:
+                        LoadLoseScreen();
                         break;
                     case Triggers.TriggeredEffect.WinScreen:
+                        LoadWinScreen();
                         break;
                 }
                 //EditorGUILayout.Slider(sunMinSize_Prop, 0, 1000, new GUIContent("Sun's Min Size"));
@@ -82,10 +96,13 @@ public class TriggersEditor : Editor
                     case Triggers.TriggeredEffect.Died:
                         break;
                     case Triggers.TriggeredEffect.LoadNextLevel:
+                        LoadNextLevel();
                         break;
                     case Triggers.TriggeredEffect.LoseScreen:
+                        LoadLoseScreen();
                         break;
                     case Triggers.TriggeredEffect.WinScreen:
+                        LoadWinScreen();
                         break;
                 }
                 //EditorGUILayout.Slider(planetSpeed_Prop, 0, 1000, new GUIContent("Planet's Speed"));
@@ -108,10 +125,13 @@ public class TriggersEditor : Editor
                     case Triggers.TriggeredEffect.Died:
                         break;
                     case Triggers.TriggeredEffect.LoadNextLevel:
+                        LoadNextLevel();
                         break;
                     case Triggers.TriggeredEffect.LoseScreen:
+                        LoadLoseScreen();
                         break;
                     case Triggers.TriggeredEffect.WinScreen:
+                        LoadWinScreen();
                         break;
                 }
                 //EditorGUILayout.Slider(moonSpeed_Prop, 0, 1000, new GUIContent("Moon's Speed"));
@@ -125,8 +145,32 @@ public class TriggersEditor : Editor
     void PlayAnimation()
     {
         EditorGUILayout.PropertyField(animator_Prop, new GUIContent("Animator Controller"));
-
         EditorGUILayout.PropertyField(animationClip_Prop, new GUIContent("Animation Clips"), true);
+    }
 
+    void Collectable()
+    {
+
+    }
+
+    void TakeDamage()
+    {
+
+    }
+    void Died()
+    {
+
+    }
+    void LoadNextLevel()
+    {
+        EditorGUILayout.PropertyField(nextLevel_Prop, new GUIContent("Next Level Scene Name"));
+    }
+    void LoadLoseScreen()
+    {
+        EditorGUILayout.PropertyField(loseScreen_Prop, new GUIContent("Lose Scene Name"));
+    }
+    void LoadWinScreen()
+    {
+        EditorGUILayout.PropertyField(winScreen_Prop, new GUIContent("Win Scene Name"));
     }
 }

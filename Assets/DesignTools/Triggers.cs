@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Triggers : MonoBehaviour
 {
@@ -20,8 +21,17 @@ public class Triggers : MonoBehaviour
     //PlayAnimation Variables
     [HideInInspector, Header("Set Animation Variables"), Tooltip("The Animator that is on the object.")]
     public Animator animatorController;
-    [HideInInspector, Tooltip("The name(s) of the Animation Clip(s) you want to play.")]
+    [HideInInspector, Tooltip("The name of the Animation Clip you want to play.")]
     public string animationClips;
+
+
+    //Scene Variables
+    [HideInInspector, Tooltip("The name of the next scene you want to load.")]
+    public string nextLevel;
+    [HideInInspector, Tooltip("The name of the lose scene.")]
+    public string loseScreen;
+    [HideInInspector, Tooltip("The name of the win scene.")]
+    public string winScreen;
 
     void Update()
     {
@@ -54,6 +64,7 @@ public class Triggers : MonoBehaviour
                     PlayAnimation();
                     break;
                 case TriggeredEffect.Collectables:
+                    Collectable();
                     break;
                 case TriggeredEffect.TakeDamage:
                     break;
@@ -82,6 +93,7 @@ public class Triggers : MonoBehaviour
                     PlayAnimation();
                     break;
                 case TriggeredEffect.Collectables:
+                    Collectable();
                     break;
                 case TriggeredEffect.TakeDamage:
                     break;
@@ -110,6 +122,10 @@ public class Triggers : MonoBehaviour
                     PlayAnimation();
                     break;
                 case TriggeredEffect.Collectables:
+                    if(other.tag == "Player")
+                    {
+                        Collectable();
+                    }
                     break;
                 case TriggeredEffect.TakeDamage:
                     break;
@@ -127,6 +143,37 @@ public class Triggers : MonoBehaviour
 
     void PlayAnimation()
     {
+        print("Animation is playing");
+        animatorController.Play(animationClips);
+    }
 
+    void Collectable()
+    {
+        Destroy(gameObject);
+    }
+
+    void TakeDamage()
+    {
+
+    }
+
+    void Died()
+    {
+
+    }
+
+    void LoadNextLevel()
+    {
+        SceneManager.LoadScene(nextLevel);
+    }
+
+    void LoadLoseScreen()
+    {
+        SceneManager.LoadScene(loseScreen);
+    }
+
+    void LoadWinScreen()
+    {
+        SceneManager.LoadScene(winScreen);
     }
 }

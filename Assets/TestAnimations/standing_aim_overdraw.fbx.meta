@@ -114,7 +114,7 @@ ModelImporter:
     4300000: Archer
     4300002: arrow
     4300004: Bow
-    7400000: mixamo.com
+    7400000: Aim
     9500000: //RootNode
     13700000: Archer
     13700002: Bow
@@ -129,10 +129,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nInbetween bone default rotation found in this file
+      is different from the one found in the source avatar:\n\t'BowRoot' : rotation
+      error = 133.818909 deg\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -140,7 +142,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Aim
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 113
